@@ -17,7 +17,7 @@ class JobCategoryController extends Controller
         $jobCategory = new JobCategory;
 
         $jobCategory->title = $request->title();
-        $jobCategory->user_id = auth()->user()->user_id;
+        $jobCategory->user_id = auth()->id();
 
         $jobCategory->save();
 

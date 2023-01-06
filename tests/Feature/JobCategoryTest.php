@@ -2,12 +2,15 @@
 
 namespace Tests\Feature;
 
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
+use App\Models\User;
+use Laravel\Sanctum\Sanctum;
+use Illuminate\Foundation\Testing\WithFaker;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class JobCategoryTest extends TestCase
 {
+    use RefreshDatabase;
     /**
      * create category test.
      *
@@ -16,7 +19,15 @@ class JobCategoryTest extends TestCase
     public function test_create_category()
     {
         // $this->withoutExceptionHandling();
-        $payload = [];
+        Sanctum::actingAs(
+            User::factory()->create(),
+            ['*']
+        );  
+        $title = 'Law';
+        
+        $payload = [
+            'title' =>$title,
+        ];
         $headers = [
             'Accept' => 'application/json'
         ];
