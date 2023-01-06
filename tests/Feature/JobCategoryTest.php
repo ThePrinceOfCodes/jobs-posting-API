@@ -16,7 +16,12 @@ class JobCategoryTest extends TestCase
     public function test_create_category()
     {
         // $this->withoutExceptionHandling();
-        $response = $this->post('/api/job-categories');
+        $payload = [];
+        $headers = [
+            'Accept' => 'application/json'
+        ];
+
+        $response = $this->post('/api/job-categories', $payload, $headers);
 
         $response->assertStatus(201);
     }
