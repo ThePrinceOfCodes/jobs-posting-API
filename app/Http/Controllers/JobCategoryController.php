@@ -16,8 +16,8 @@ class JobCategoryController extends Controller
 
         $jobCategory = new JobCategory;
 
-        $jobCategory->title = $request->title();
-        $jobCategory->user_id = auth()->user()->user_id;
+        $jobCategory->title = $request->title;
+        $jobCategory->user_id = auth()->id();
 
         $jobCategory->save();
 
@@ -25,6 +25,15 @@ class JobCategoryController extends Controller
             'status' => true,
             'message' => 'Job category created',
             'data' => $jobCategory
+        ], 201);
+    }
+
+    public function index()
+    {
+        return response()->json([
+            'status' => true,
+            'message' => 'records retrived',
+            'data' => JobCategory::all(),
         ], 201);
     }
 }

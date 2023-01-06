@@ -15,6 +15,8 @@ return new class extends Migration
     {
         Schema::create('job_categories', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id');
+            $table->string('title')->required();
             $table->timestamps();
         });
     }
