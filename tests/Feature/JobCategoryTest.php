@@ -48,7 +48,7 @@ class JobCategoryTest extends TestCase
 
 
      /**
-     * create category test.
+     * fetch category test.
      *
      * @return void
      */

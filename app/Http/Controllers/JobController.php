@@ -31,4 +31,13 @@ class JobController extends Controller
             'data' => $job
         ], 201);
     }
+
+    public function index()
+    {
+        return response()->json([
+            'status' => true,
+            'message' => 'records retrived',
+            'data' => Job::all(),
+        ], 201);
+    }
 }
