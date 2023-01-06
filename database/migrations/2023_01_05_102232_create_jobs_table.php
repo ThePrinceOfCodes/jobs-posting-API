@@ -16,8 +16,11 @@ return new class extends Migration
     {
         Schema::create('jobs', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('jobs_id');
             $table->string('title')->required();
+            $table->foreignId('job_category_id')->constrained();
+            $table->string('description')->required();
+            $table->string('location')->required();
+            $table->string('requirements')->required();
             $table->timestamps();
         });
     }

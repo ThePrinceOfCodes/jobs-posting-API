@@ -1,8 +1,9 @@
 <?php
 
-use App\Http\Controllers\JobCategoryController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\JobController;
+use App\Http\Controllers\JobCategoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,3 +21,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::post('job-categories', [JobCategoryController::class, 'store']);
+Route::get('job-categories', [JobCategoryController::class, 'index']);
+
+Route::post('job', [JobController::class, 'store']);
+

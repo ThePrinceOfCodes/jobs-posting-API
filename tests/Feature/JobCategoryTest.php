@@ -52,12 +52,18 @@ class JobCategoryTest extends TestCase
      *
      * @return void
      */
-    // public function test_fetch_category()
-    // {
-    //     $response = $this->get('/api/job-categories');
+    public function test_fetch_category()
+    {
+        $response = $this->get('/api/job-categories',['Accept' => 'application/json']);
 
-    //     $response->assertStatus(201);
-    // }
+        $response->assertJson([
+            'status' => true,
+            'message' => 'records retrived',
+            
+        ]);
+
+        $response->assertStatus(201);
+    }
 
 
     /**
