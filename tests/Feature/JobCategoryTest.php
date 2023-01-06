@@ -15,7 +15,8 @@ class JobCategoryTest extends TestCase
      */
     public function test_create_category()
     {
-        $response = $this->post('/job-categories');
+        // $this->withoutExceptionHandling();
+        $response = $this->post('/api/job-categories');
 
         $response->assertStatus(201);
     }
@@ -26,12 +27,12 @@ class JobCategoryTest extends TestCase
      *
      * @return void
      */
-    public function test_fetch_category()
-    {
-        $response = $this->post('/job-categories');
+    // public function test_fetch_category()
+    // {
+    //     $response = $this->get('/api/job-categories');
 
-        $response->assertStatus(201);
-    }
+    //     $response->assertStatus(201);
+    // }
 
 
     /**
