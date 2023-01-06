@@ -25,5 +25,7 @@ Route::get('job-categories', [JobCategoryController::class, 'index']);
 
 Route::post('job', [JobController::class, 'store']);
 Route::get('job', [JobController::class, 'index']);
+Route::patch('job/{id}', [JobController::class, 'update']);
+
 
 

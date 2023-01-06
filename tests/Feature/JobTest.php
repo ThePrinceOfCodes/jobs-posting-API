@@ -2,6 +2,7 @@
 
 namespace Tests\Feature;
 
+use App\Models\Job;
 use Tests\TestCase;
 use App\Models\JobCategory;
 use Illuminate\Foundation\Testing\WithFaker;
@@ -79,5 +80,50 @@ class JobTest extends TestCase
         ]);
 
         $response->assertStatus(201);
+    }
+
+     /**
+     * A basic feature test example.
+     *
+     * @return void
+     */
+    public function test_update_job()
+    {
+        // $this->withoutExceptionHandling();
+
+        $title = 'software DevOPs';
+        $description  = 'software engineer needed';
+        $location = 'lagos';
+
+        $job = Job::factory()->create();
+
+        $headers = [
+            'Accept' => 'application/json'
+        ];
+        $payload = [
+            'title' => $title,
+            'description' => $description,
+            'location' => $location,
+            'requirements' => $job->requirements,
+            'job_category_id' => $job->job_category_id
+        ];
+        
+
+        $response = $this->patch('/api/job/'.$job->id, $payload, $headers);
+
+        $response->assertJson([
+            'status' => true,
+            'message' => 'Job updated',
+            'data' => [
+                'id' => 2,
+                'title' => $title,
+                'description' => $description,
+                'location' => $location,
+                'requirements' => $job->requirements,
+                'job_category_id' => $job->job_category_id
+            ]
+        ]);
+
+        $response->assertStatus(200);
     }
 }

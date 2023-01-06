@@ -40,4 +40,38 @@ class JobController extends Controller
             'data' => Job::all(),
         ], 201);
     }
+
+    public function update(Request $request, $id)
+    {
+        // $request->validate([
+        //     'title' => 'required|string|unique:job_categories,title',
+        //     'job_category_id' => 'required'
+        // ]);
+
+        $job = Job::find($id);
+
+        if(!$job)
+        {
+            return response()->json([
+                'status' => true,
+                'message' => 'job not found',
+                'data' => null
+            ], 404);
+        }
+
+        $job->title = $request->title;
+        $job->description = $request->description;
+        $job->job_category_id = $request->job_category_id;
+        $job->location = $request->location;
+        $job->requirements = $request->requirements;
+
+        $job->update();
+
+        return response()->json([
+            'status' => true,
+            'message' => 'Job updated',
+            'data' => $job
+        ]);
+        
+    }
 }
