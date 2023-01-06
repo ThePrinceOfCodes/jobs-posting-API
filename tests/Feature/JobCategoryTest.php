@@ -34,6 +34,15 @@ class JobCategoryTest extends TestCase
 
         $response = $this->post('/api/job-categories', $payload, $headers);
 
+        $response->assertJson([
+            'status' => true,
+            'message' => 'Job category created',
+            'data' => [
+                'id' => 1,
+                'title' => $title
+            ]
+        ]);
+
         $response->assertStatus(201);
     }
 
