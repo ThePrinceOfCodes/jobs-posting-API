@@ -21,6 +21,19 @@ class JobCategoryTest extends TestCase
     }
 
 
+     /**
+     * create category test.
+     *
+     * @return void
+     */
+    public function test_fetch_category()
+    {
+        $response = $this->post('/job-categories');
+
+        $response->assertStatus(201);
+    }
+
+
     /**
      * fetch category test.
      *
